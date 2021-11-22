@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements CategoryRVAdapter
         Call<NewsModal> call;
         if (category.equals("ALL")){
             call = retrofitAPI.getAllNews(url);
-        }else call = RetrofitAPI.getNewsByCategory(categoryURL);
+        }else call = retrofitAPI.getNewsByCategory(categoryURL);
 
         call.enqueue(new Callback<NewsModal>() {
             @Override
@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements CategoryRVAdapter
                 NewsModal newsmodal = response.body();
                 loadingPB.setVisibility(View.GONE);
                 ArrayList<Articles> articles = newsmodal.getArticles();
+
                 for (int i =0; i<articles.size();i++){
                     articlesArrayList.add(new Articles(articles.get(i).getTitle(),articles.get(i).getDescription(),articles.get(i).getUrlToImage(), articles.get(i).getUrl(), articles.get(i).getContent()));
                 }

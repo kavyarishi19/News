@@ -35,21 +35,21 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryRVAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryRVAdapter.ViewHolder holder,int position) {
         CategoryRVModal categoryRVModal = categoryRVModals.get(position);
         holder.categoryTV.setText(categoryRVModal.getCategory());
         Picasso.get().load(categoryRVModal.getCategoryImageUrl()).into(holder.categoryIV);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 categoryClickInterface.onCategoryCLick(position);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
+
         return categoryRVModals.size();
     }
     public interface CategoryClickInterface {
